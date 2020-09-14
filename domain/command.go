@@ -10,14 +10,6 @@ type CreateOrderCommand struct {
 	Price uint
 }
 
-func (coc CreateOrderCommand) Payload() interface{} {
-	return ""
-}
-
-func (coc CreateOrderCommand) CommandType() string {
-	return "CreateOrderCommand"
-}
-
 type CreateOrderCommandHandler struct {}
 
 func (ch CreateOrderCommandHandler) Handle(command cqrs.CommandMessage) error {
@@ -27,7 +19,7 @@ func (ch CreateOrderCommandHandler) Handle(command cqrs.CommandMessage) error {
 			fmt.Println("Handler.")
 			fmt.Println(cmd.Price)
 	default:
-		return errors.New("Bad commadn type")
+		return errors.New("bad command type")
 	}
 
 	return nil
